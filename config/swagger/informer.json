@@ -1,0 +1,84 @@
+{
+  "paths": {
+    "/api/create-informer": {
+      "x-swagger-router-controller": "InformerController",
+      "post": {
+        "summary": "Створити інформера",
+        "operationId": "createInformer",
+        "tags": [
+          "Informer API"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "InformerBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InformerBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InformerBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/{informer_id}": {
+      "x-swagger-router-controller": "InformerController",
+      "get": {
+        "summary": "Інформер за айді",
+        "operationId": "getInformerById",
+        "tags": [
+          "Informer API"
+        ],
+        "parameters":[
+          {
+            "type": "string",
+            "name": "informer_id",
+            "in": "path",
+            "description": "informer_id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InformerBody"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+    "InformerBody":{
+      "properties": {
+        "email":{
+          "type":"string"
+        },
+        "companyId":{
+          "type":"string"
+        },
+        "taskId":{
+          "type":"string"
+        },
+        "firstName":{
+          "type":"string"
+        },
+        "lastName":{
+          "type":"string"
+        },
+        "phoneNumber":{
+          "type":"string"
+        }
+      }
+    }
+  }
+}

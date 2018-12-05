@@ -1,0 +1,57 @@
+{
+  "name": "dovira-admin",
+  "version": "0.0.1",
+  "private": true,
+  "description": "New Swagger API Project",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "main": "index.js",
+  "global-strict": [
+    "error",
+    "never"
+  ],
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "co": "^4.6.0",
+    "cors": "^2.8.4",
+    "crypto": "^1.0.1",
+    "cyrillic-to-latin": "^2.0.0",
+    "express": "^4.12.3",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^4.11.13",
+    "mongoose-paginate": "^5.0.3",
+    "mongoose-query-paginate": "^1.0.3",
+    "mongoose-relationship": "^0.1.5",
+    "morgan": "^1.9.0",
+    "nodejs": "0.0.0",
+    "nodemailer": "^2.7.2",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "populate": "^5.0.1",
+    "swagger": "^0.7.5",
+    "swagger-express-mw": "^0.7.0",
+    "swagger-tools": "^0.10.4",
+    "swagger-ui-express": "^2.0.8",
+    "xoauth2": "^1.2.0"
+  },
+  "devDependencies": {
+    "should": "^7.1.0",
+    "supertest": "^1.0.0",
+    "eslint": "~3.3.1",
+    "babel-eslint": "~6.1.2",
+    "prettier": "^1.11.0",
+    "eslint-config-airbnb": "~10.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "~3.3.0",
+    "eslint-plugin-import": "~1.13.0",
+    "eslint-plugin-jsx-a11y": "~2.1.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "~6.1.1"
+  },
+  "scripts": {
+    "start": "node --use_strict index.js",
+    "test": "swagger project test"
+  }
+}

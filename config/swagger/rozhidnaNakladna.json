@@ -1,0 +1,101 @@
+{
+  "paths":{
+    "/api/create-rozhidna-nakladna":{
+      "x-swagger-router-controller": "RozhidnaNakladnaController",
+      "post":{
+        "summary":"Створити розхідну накладну",
+        "operationId":"createRozhidnaNakladna",
+        "tags": [
+          "RozhidnaNakladna API"
+        ],
+        "parameters":[{
+          "name": "body",
+          "in": "body",
+          "description": "RozhidnaNakladnaBody",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/RozhidnaNakladnaBody"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RozhidnaNakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/rozhidna-nakladna/{rozhidna_id}":{
+      "x-swagger-router-controller": "RozhidnaNakladnaController",
+      "get":{
+        "summary":"Оглянути розхідну накладну",
+        "tags":[
+          "RozhidnaNakladna API"
+        ],
+        "operationId":"getRozhidnaNakladnaById",
+        "parameters":[{
+          "type": "string",
+          "name": "rozhidna_id",
+          "in": "path",
+          "description": "rozhidna_id",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RozhidnaNakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/get-list-of-rozhidni-nakladni":{
+      "x-swagger-router-controller":"RozhidnaNakladnaController",
+      "get":{
+        "summary":"Список розхідних накладних",
+        "tags":[
+          "RozhidnaNakladna API"
+        ],
+        "operationId":"getListOfRozhidnaNakladna",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RozhidnaNakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "RozhidnaNakladnaBody":{
+      "properties":{
+        "barCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "date":{
+          "type": "string"
+        },
+        "forWho":{
+          "type": "string"
+        }
+      }
+    }
+  }
+}

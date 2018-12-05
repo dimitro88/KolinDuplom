@@ -1,0 +1,164 @@
+{
+  "paths": {
+    "/api/register": {
+      "x-swagger-router-controller": "UserController",
+      "post": {
+        "summary": "Реєстрація нового робітника",
+        "tags": [
+          "User API"
+        ],
+        "operationId": "registerWorker",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "UserBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description" : "OK",
+            "schema": {
+              "$ref": "#/definitions/loginOutBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/login" : {
+      "x-swagger-router-controller": "UserController",
+      "post" : {
+        "summary": "Авторизація користувача",
+        "tags": [
+          "User API"
+        ],
+        "operationId": "loginUser",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "UserBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description" : "OK",
+            "schema": {
+              "$ref": "#/definitions/loginOutBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/create-new-company": {
+      "x-swagger-router-controller": "UserController",
+      "post": {
+        "summary": "Додати нову компанію",
+        "tags": [
+          "User API"
+        ],
+        "operationId": "createNewCompany",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "UserBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description" : "OK",
+            "schema": {
+              "$ref": "#/definitions/userBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "register": {
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        }
+      }
+    },
+    "login": {
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "login", "password"
+      ]
+    },
+    "loginOutBody": {
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "companyBody": {
+      "properties": {
+        "companies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "userBody": {
+      "properties": {
+        "companies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "fullName": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "paths": {
+    "/api/order": {
+      "x-swagger-router-controller": "OrderController",
+      "post": {
+        "summary": "Нове замовлення",
+        "tags": [
+          "Order API"
+        ],
+        "operationId": "addOrder",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "OrderBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/orders/list": {
+      "x-swagger-router-controller": "OrderController",
+      "get": {
+        "summary": "Список замовлень",
+        "tags": ["Order API"],
+        "operationId" :"ordersList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrdersListBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+
+      }
+    },
+    "/api/order/{order_id}": {
+      "x-swagger-router-controller": "OrderController",
+      "get":{
+        "summary": "Замовлення за ID",
+        "tags": ["Order API"],
+        "operationId": "orderById",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "order_id",
+            "in": "path",
+            "description": "order_id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      },
+      "put":{
+        "summary": "Оновлення замовлення",
+        "tags": ["Order API"],
+        "operationId":"orderUpdate",
+        "parameters":[
+          {
+            "type": "string",
+            "name": "order_id",
+            "in": "path",
+            "description": "order_id",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "OrderBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "OrderBody": {
+      "properties": {
+        "orderNumber": {
+          "type": "string"
+        },
+        "PIB": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "montagePlace": {
+          "type": "string"
+        },
+        "deadPeoples": {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "dateOfBegin": {
+          "type": "string"
+        },
+        "dateOfEnd": {
+          "type": "string"
+        },
+        "epitaphs": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "images": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "typeOfMontage": {
+          "properties": {
+            "montageField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "delivering": {
+          "properties": {
+            "deliveringField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "typeOfPrint": {
+          "properties": {
+            "printField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "vase": {
+          "properties": {
+            "vaseField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "bench": {
+          "properties": {
+            "benchField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "installing": {
+          "properties": {
+            "installingField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "riggingWorks": {
+          "properties": {
+            "riggingField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "sandstone": {
+          "properties": {
+            "sandstoneField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "brassWorks": {
+          "properties": {
+            "brassField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "painterWork": {
+          "properties": {
+            "painterField": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        }
+      }
+    },
+    "OrdersListBody" :{
+      "type" : "array",
+      "items": {
+        "properties": {
+          "orderNumber": {
+            "type": "string"
+          },
+          "PIB": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "montagePlace": {
+            "type": "string"
+          },
+          "deadPeoples": {
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "dateOfBegin": {
+            "type": "string"
+          },
+          "dateOfEnd": {
+            "type": "string"
+          },
+          "epitaphs": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "images": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "typeOfMontage": {
+            "properties": {
+              "montageField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "delivering": {
+            "properties": {
+              "deliveringField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "typeOfPrint": {
+            "properties": {
+              "printField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "vase": {
+            "properties": {
+              "vaseField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "bench": {
+            "properties": {
+              "benchField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "installing": {
+            "properties": {
+              "installingField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "riggingWorks": {
+            "properties": {
+              "riggingField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "sandstone": {
+            "properties": {
+              "sandstoneField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "brassWorks": {
+            "properties": {
+              "brassField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "painterWork": {
+            "properties": {
+              "painterField": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type":"object"
+
+      }
+    }
+  }
+}

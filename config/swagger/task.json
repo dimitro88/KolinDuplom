@@ -1,0 +1,78 @@
+{
+  "paths": {
+    "/api/create-task": {
+      "x-swagger-router-controller": "TaskController",
+      "post": {
+        "summary": "Створити таску",
+        "operationId": "createTask",
+        "tags": [
+          "Task API"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "TaskBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TaskBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TaskBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/tasks/{task_id}": {
+      "x-swagger-router-controller": "TaskController",
+      "get": {
+        "summary": "Таска за айді",
+        "operationId": "getTaskById",
+        "tags": [
+          "Task API"
+        ],
+        "parameters":[
+          {
+            "type": "string",
+            "name": "task_id",
+            "in": "path",
+            "description": "task_id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TaskBody"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+    "TaskBody":{
+      "properties": {
+        "task":{
+          "type":"string"
+        },
+        "categoryId":{
+          "type":"string"
+        },
+        "companyId":{
+          "type":"string"
+        },
+        "answer":{
+          "type":"string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "paths": {
+    "/api/register-opt": {
+      "x-swagger-router-controller": "OptController",
+      "post": {
+        "summary": "Реєстрація оптовика",
+        "operationId": "registerOpt",
+        "tags": [
+          "optovuk API"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "OptovukBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OptovukBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OptovukBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/get-opt-deactivated": {
+      "get": {
+        "x-swagger-router-controller": "OptController",
+        "summary": "Усі неактивовані оптовики",
+        "operationId": "findDeactevatedOpts",
+        "tags": [
+          "optovuk API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OptovukBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/api/get-all-opts":{
+      "x-swagger-router-controller":"OptController",
+      "get":{
+        "summary": "Усі оптовики",
+        "operationId": "getListOpts",
+        "tags":[
+          "optovuk API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OptovukBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/api/get-opt-ping":{
+      "x-swagger-router-controller":"OptController",
+      "get":{
+        "summary":"Кількість неактивованих оптовиків",
+        "operationId": "countDeactivated",
+        "tags": [
+          "optovuk API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OptovukBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/api/{opt_id}":{
+      "x-swagger-router-controller":"OptController",
+      "put":{
+        "summary": "Зміна статусу оптовика",
+        "operationId": "updateStatus",
+        "tags":[
+          "optovuk API"
+        ],
+        "parameters":[
+          {
+            "type": "string",
+            "name": "opt_id",
+            "in": "path",
+            "description": "opt_id",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "StatusBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatusBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OptovukBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/api/get-products-by-material/{material}":{
+      "x-swagger-router-controller": "OptController",
+      "get":{
+        "summary": "Товари зі складу за типом камню",
+        "operationId": "getProductsByMaterial",
+        "tags":[
+          "optovuk API"
+        ],
+        "parameters":[
+          {
+            "type": "string",
+            "name": "material",
+            "in": "path",
+            "description": "material",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          },
+          {
+            "optovuk": []
+          }
+        ]
+      }
+    },
+    "/api/get-products-by-material/":{
+      "x-swagger-router-controller": "OptController",
+      "get":{
+        "summary": "Товари зі складу за типом камню",
+        "operationId": "getProductsByMaterial",
+        "tags":[
+          "optovuk API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          },
+          {
+            "optovuk": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions":{
+    "OptovukBody":{
+      "properties":{
+        "firstName":{
+          "type": "string"
+        },
+        "secondName":{
+          "type":"string"
+        },
+        "firma":{
+          "type":"string"
+        },
+        "phoneNumber":{
+          "type":"string"
+        },
+        "email":{
+          "type":"string"
+        },
+        "password":{
+          "type": "string"
+        }
+      }
+    },
+    "StatusBody":{
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductBody":{
+      "properties": {
+        "placeOnStorage": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "nakladnaId":{
+          "type" : "string"
+        },
+        "objectOfNakladnaId":{
+          "type":"string"
+        }
+      }
+    }
+  }
+}

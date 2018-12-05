@@ -1,0 +1,11 @@
+{
+  "localDB": "mongodb://localhost/dovira",
+  "productionDB": "mongodb://doviraAdminUser:as~jmye4hS[nLQ@localhost:27888/dovira",
+  "saltWorkFactor": 10,
+  "secret": "Lzre.nj,s<j;t?ojzytvjcrfkm",
+  "swaggerUi": true,
+  "server": {
+    "port": "25871",
+    "swaggerPath": "/api-docs"
+  }
+}

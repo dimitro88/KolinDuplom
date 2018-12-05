@@ -1,0 +1,331 @@
+{
+  "paths":{
+    "/api/objects-of-nakladna":{
+      "x-swagger-router-controller": "ObjectOfNakladnaController",
+      "post":{
+        "summary":"Додати об`єкт накладної",
+        "operationId":"addObjectOfNakladna",
+        "tags": [
+          "Nakladna API"
+        ],
+        "parameters":[
+          {
+            "name": "body",
+            "in": "body",
+            "description": "ObjectOfNakladnaBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ObjectOfNakladnaBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ObjectOfNakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/get-list-of-nakladna-objects":{
+      "x-swagger-router-controller": "ObjectOfNakladnaController",
+      "get":{
+        "summary":"Список пам`ятників",
+        "tags":[
+          "Nakladna API"
+        ],
+        "operationId": "getListOfNakladnaObjects",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ObjectOfNakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/nakladna":{
+      "x-swagger-router-controller": "ObjectOfNakladnaController",
+      "post":{
+        "summary": "Створити накладну",
+        "tags":[
+          "Nakladna API"
+        ],
+        "operationId":"createNakladna",
+        "parameters":[{
+          "name": "body",
+          "in": "body",
+          "description": "NakladnaBody",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/NakladnaBody"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/nakladna/{nakladna_id}":{
+      "x-swagger-router-controller": "ObjectOfNakladnaController",
+      "get":{
+        "summary":"Оглянути накладну",
+        "tags":[
+          "Nakladna API"
+        ],
+        "operationId":"getNakladna",
+        "parameters":[{
+          "type": "string",
+          "name": "nakladna_id",
+          "in": "path",
+          "description": "nakladna_id",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/get-list-of-nakladni":{
+      "x-swagger-router-controller":"ObjectOfNakladnaController",
+      "get":{
+       "summary":"Список накладних",
+        "tags":[
+          "Nakladna API"
+        ],
+        "operationId":"getListOfNakladna",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/take-product-by-bar-code":{
+      "x-swagger-router-controller":"ObjectOfNakladnaController",
+      "get":{
+        "summary":"Продукт за штрих-кодом",
+        "operationId":"getProductByBarCode",
+        "tags":[
+          "Nakladna API"
+        ],
+        "parameters":[{
+          "type": "string",
+          "name": "barCode",
+          "in": "query",
+          "description": "barCode",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/get-nakladna-with-filters":{
+      "x-swagger-router-controller":"ObjectOfNakladnaController",
+      "post":{
+        "summary":"Накладна за датою а за тим хто відправив",
+        "operationId":"getNakladnaWithFilters",
+        "tags":[
+          "Nakladna API"
+        ],
+        "parameters":[{
+          "name": "body",
+          "in": "body",
+          "description": "FilterBody",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/FilterBody"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NakladnaBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/rozdil-kamnya-na-dva-by-bar-code/{barCode}":{
+      "x-swagger-router-controller": "ObjectOfNakladnaController",
+      "post":{
+        "summary":"Розділити камінь на 2 за штрих-кодом",
+        "operationId":"separateStoneByBarCode",
+        "tags": [
+          "Nakladna API"
+        ],
+        "parameters":[{
+          "type": "string",
+          "name": "barCode",
+          "in": "path",
+          "description": "barCode",
+          "required": true
+        },
+          {
+            "name": "body",
+            "in": "body",
+            "schema":{
+              "properties":{
+                "stones":{
+                  "type":"array",
+                  "items":{
+                    "$ref": "#/definitions/SeparateBody"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    }
+  },
+  "definitions":{
+    "ObjectOfNakladnaBody": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "size": {
+          "properties": {
+            "height": {
+              "type": "string"
+            },
+            "length": {
+              "type": "string"
+            },
+            "width": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "NakladnaBody": {
+      "properties": {
+        "elements":{
+          "type" : "array",
+          "items": {
+            "properties": {
+              "elementBody": {
+                "type": "string"
+              },
+              "number": {
+                "type": "number"
+              },
+              "cost":{
+                "type": "number"
+              }
+            }
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "fromWho" : {
+          "type": "string"
+        }
+      }
+    },
+    "ProductBody":{
+      "properties":{
+        "code":{
+          "type":"string"
+        },
+        "placeOnStorage":{
+          "type":"string"
+        },
+        "notes":{
+          "type":"string"
+        },
+        "nakladnaId":{
+          "type":"string"
+        }
+      }
+    },
+    "FilterBody":{
+      "properties":{
+        "dateBody": {
+          "type": "array",
+          "items":{
+            "type": "string"
+          }
+        },
+        "fromWho": {
+          "type": "string"
+        }
+      }
+    },
+    "SeparateBody":{
+      "properties": {
+        "size": {
+          "properties": {
+            "height": {
+              "type": "string"
+            },
+            "length": {
+              "type": "string"
+            },
+            "width": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

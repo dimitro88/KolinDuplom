@@ -1,0 +1,45 @@
+{
+  "paths": {
+    "/api/create-category": {
+      "x-swagger-router-controller": "CategoryController",
+      "post": {
+        "summary": "Створити категорію",
+        "operationId": "createCategory",
+        "tags": [
+          "Category API"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "CategoryBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CategoryBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CategoryBody"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+    "CategoryBody":{
+      "properties": {
+        "companyId":{
+          "type":"string"
+        },
+        "name":{
+          "type":"string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "paths":{
+    "/api/create-product":{
+      "x-swagger-router-controller":"ProductController",
+      "post":{
+        "summary":"Додати товар на склад",
+        "operationId": "createProduct",
+        "tags": [
+          "Product API"
+        ],
+        "parameters":[
+        {
+          "in": "body",
+          "name": "body",
+          "description": "ProductBody",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/ProductBody"
+          }
+        }],
+          "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/get-products-by-nakladna":{
+     "x-swagger-router-controller":"ProductController" ,
+      "get":{
+        "summary":"Товари на складі",
+        "operationId": "getProductsByNakladna",
+        "tags":[
+          "Product API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          { "token": [] }
+        ]
+      }
+    },
+    "/api/products/{product_id}":{
+      "x-swagger-router-controller":"ProductController",
+      "put":{
+        "summary": "Зміна інформації про продукт",
+        "operationId": "updateProductById",
+        "tags":[
+          "Product API"
+        ],
+        "parameters":[
+          {
+            "type": "string",
+            "name": "product_id",
+            "in": "path",
+            "description": "product_id",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "ProductBodyForUpdate",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductBodyForUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions":{
+    "ProductBody":{
+      "properties": {
+        "placeOnStorage": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "nakladnaId":{
+          "type" : "string"
+        },
+        "objectOfNakladnaId":{
+          "type":"string"
+        }
+      }
+    },
+    "ProductBodyForUpdate":{
+      "properties": {
+        "placeOnStorage": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

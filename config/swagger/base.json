@@ -1,0 +1,28 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Dovira-admin"
+  },
+  "basePath": "/",
+  "consumes":[
+    "application/json"  
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+  },
+  "securityDefinitions": {
+    "token": {
+      "name": "Authorization",
+      "type": "apiKey",
+      "in": "header"
+    },
+    "optovuk": {
+      "name": "Authorization",
+      "type": "apiKey",
+      "in": "header"
+    }
+  }
+}

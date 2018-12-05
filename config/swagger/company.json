@@ -1,0 +1,192 @@
+{
+  "paths": {
+    "/api/create-company": {
+      "x-swagger-router-controller": "CompanyController",
+      "post": {
+        "summary": "Створити компанію",
+        "operationId": "createCompany",
+        "tags": [
+          "Company API"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "CompanyBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CompanyBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CompanyBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/companies/add-admins/{company_id}": {
+      "x-swagger-router-controller": "CompanyController",
+      "put": {
+        "summary": "Додати адміна в компанію",
+        "operationId": "addAdminsToCompany",
+        "tags": [
+          "Company API"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "company_id",
+            "in": "path",
+            "description": "company_id",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "adminsBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/adminsBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CompanyBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/companies/add-informers/{company_id}": {
+      "x-swagger-router-controller": "CompanyController",
+      "put": {
+        "summary": "Додати інформера в компанію",
+        "operationId": "addInformersToCompany",
+        "tags": [
+          "Company API"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "company_id",
+            "in": "path",
+            "description": "company_id",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "informersBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/informersBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CompanyBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/companies/add-tasks/{company_id}": {
+      "x-swagger-router-controller": "CompanyController",
+      "put": {
+        "summary": "Додати таски в компанію",
+        "operationId": "addTasksToCompany",
+        "tags": [
+          "Company API"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "company_id",
+            "in": "path",
+            "description": "company_id",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "tasksBody",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tasksBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CompanyBody"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+    "CompanyBody":{
+      "properties": {
+        "name":{
+          "type":"string"
+        }
+      }
+    },
+    "adminsBody": {
+      "properties": {
+        "admins":{
+          "type" : "array",
+          "items": {
+            "properties": {
+              "adminId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "informersBody": {
+      "properties": {
+        "informers":{
+          "type" : "array",
+          "items": {
+            "properties": {
+              "informerId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "tasksBody": {
+      "properties": {
+        "tasks":{
+          "type" : "array",
+          "items": {
+            "properties": {
+              "taskId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
