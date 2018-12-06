@@ -1,3 +1,4 @@
+const Company = require("../models/CompanyModel");
 const jwt = require('jsonwebtoken');
 const co = require('co');
 const User = require('./../models/UserModel');
@@ -5,6 +6,7 @@ const UnauthorizedError = require('./../errors/ForbiddenError');
 const cryptoHelper = require('./../helpers/cryptoHelpers');
 const config = require('./../config/config.json');
 const CustomError = require('../errors/CustomError');
+
 
 class UserRepository {
   registerWorker(userBody) {
@@ -42,6 +44,16 @@ class UserRepository {
       companiesToPush.companies.push(company);
     });
     return await User.findByIdAndUpdate(user_id, companiesToPush, { new: true });
+  }
+
+  // async getMyCompanies(user_id){
+  //   let companies = await Company.find().then(res => res.companies);
+  //   console.log(companies);
+  //   //return companies;
+  // }
+
+  async getListOfAdmins(){
+    return await User.find();
   }
 
 }

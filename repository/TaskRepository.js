@@ -15,5 +15,9 @@ class TaskRepository {
     return task;
   }
 
+  async getListOfTasks(){
+    return await Task.find();
+  }
+
 }
 module.exports = TaskRepository;

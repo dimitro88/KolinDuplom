@@ -8,7 +8,7 @@ const companySchema = new Schema({
     {
       adminId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Admin',
+        ref: 'User',
         required: true,
       }
     }

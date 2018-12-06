@@ -25,4 +25,21 @@ module.exports = {
     dbHelper.handleOk(res, companyRepository.addTasksToCompany(req.swagger.params.company_id.value, req.body));
   },
 
+
+  getCategoriesByCompanyId(req, res, next){
+    dbHelper.handleOk(res,
+      companyRepository.getCategoriesByCompanyId(req.swagger.params.company_id.value));
+  },
+
+  getTasksByCompanyId(req, res, next){
+    dbHelper.handleOk(res,
+      companyRepository.getTasksByCompanyId(req.swagger.params.company_id.value));
+  },
+
+  getListOfCompanies(req,res,next){
+    dbHelper.handleOk(res,
+      companyRepository.getListOfCompanies());
+  },
+
+
 };

@@ -1,6 +1,9 @@
 const co = require('co');
 const _ = require('lodash');
 const Company = require('../models/CompanyModel');
+const Category = require('../models/CategoryModel');
+const Task = require('../models/TaskModel');
+const User = require('../models/UserModel');
 
 class CompanyRepository {
 
@@ -12,8 +15,7 @@ class CompanyRepository {
   async addAdminsToCompany(company_id, adminsToPush){
     let company = await Company.findById(company_id);
     console.log(adminsToPush.admins);
-    company.admins.forEach(comp => {
-      console.log(comp);
+    company.admins.forEach(async comp => {
       adminsToPush.admins.push(comp);
     });
     return await Company.findByIdAndUpdate(company_id, adminsToPush, { new: true });
@@ -38,5 +40,20 @@ class CompanyRepository {
     });
     return await Company.findByIdAndUpdate(company_id, tasksToPush, { new: true });
   }
+
+  async getCategoriesByCompanyId(company_id) {
+    const categories = await Category.find({companyId : company_id});
+    return categories;
+  }
+
+  async getTasksByCompanyId(company_id) {
+    const tasks = await Task.find({companyId : company_id});
+    return tasks;
+  }
+
+  async getListOfCompanies(){
+    return await Company.find();
+  }
+
 }
 module.exports = CompanyRepository;

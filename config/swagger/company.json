@@ -136,11 +136,109 @@
           }
         }
       }
+    },
+    "/api/companies/get-categories-by-company-id/{company_id}": {
+      "x-swagger-router-controller": "CompanyController",
+      "get": {
+        "summary": "Усі категорії за айдішкою компанії",
+        "operationId": "getCategoriesByCompanyId",
+        "tags": [
+          "Company API"
+        ],
+        "parameters":[
+          {
+            "type": "string",
+            "name": "company_id",
+            "in": "path",
+            "description": "company_id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CategoryBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/companies/get-tasks-by-company-id/{company_id}": {
+      "x-swagger-router-controller": "CompanyController",
+      "get": {
+        "summary": "Усі таски за айдішкою компанії",
+        "operationId": "getTasksByCompanyId",
+        "tags": [
+          "Company API"
+        ],
+        "parameters":[
+          {
+            "type": "string",
+            "name": "company_id",
+            "in": "path",
+            "description": "company_id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TaskBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/get-list-of-companies":{
+      "x-swagger-router-controller":"CompanyController",
+      "get":{
+        "summary":"Список компаній",
+        "tags":[
+          "Company API"
+        ],
+        "operationId":"getListOfCompanies",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CompanyBody"
+            }
+          }
+        }
+      }
     }
   },
   "definitions":{
     "CompanyBody":{
       "properties": {
+        "name":{
+          "type":"string"
+        }
+      }
+    },
+    "TaskBody":{
+      "properties": {
+        "task":{
+          "type":"string"
+        },
+        "categoryId":{
+          "type":"string"
+        },
+        "companyId":{
+          "type":"string"
+        },
+        "answer":{
+          "type":"string"
+        }
+      }
+    },
+    "CategoryBody":{
+      "properties": {
+        "companyId":{
+          "type":"string"
+        },
         "name":{
           "type":"string"
         }

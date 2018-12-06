@@ -18,4 +18,9 @@ module.exports = {
       taskRepository.getTaskById(req.swagger.params.task_id.value));
   },
 
+  getListOfTasks(req,res,next){
+    dbHelper.handleOk(res,
+      taskRepository.getListOfTasks());
+  },
+
 };

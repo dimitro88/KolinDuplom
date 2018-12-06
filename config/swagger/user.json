@@ -84,13 +84,49 @@
           "200": {
             "description" : "OK",
             "schema": {
-              "$ref": "#/definitions/userBody"
+              "$ref": "#/definitions/userCompaniesBody"
             }
           }
         },
         "security": [
           { "token": [] }
         ]
+      }
+    },
+    "/api/get-all-my-companies": {
+      "x-swagger-router-controller": "UserController",
+      "get": {
+        "summary": "Мої компанії",
+        "tags": [
+          "User API"
+        ],
+        "operationId": "getMyCompanies",
+        "responses": {
+          "200": {
+            "description" : "OK",
+            "schema": {
+              "$ref": "#/definitions/userCompaniesBody"
+            }
+          }
+        }
+      }
+    },
+    "/api/get-list-of-admins":{
+      "x-swagger-router-controller":"UserController",
+      "get":{
+        "summary":"Список адмінів",
+        "tags":[
+          "User API"
+        ],
+        "operationId":"getListOfAdmins",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/adminBody"
+            }
+          }
+        }
       }
     }
   },
@@ -139,15 +175,19 @@
     },
     "companyBody": {
       "properties": {
-        "companies": {
+        "companies":{
+          "type" : "array",
           "items": {
-            "type": "string"
-          },
-          "type": "array"
+            "properties": {
+              "company": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     },
-    "userBody": {
+    "userCompaniesBody": {
       "properties": {
         "companies": {
           "items": {
@@ -157,6 +197,26 @@
         },
         "fullName": {
           "type": "string"
+        }
+      }
+    },
+    "adminBody": {
+      "properties": {
+        "fullName": {
+          "type": "string"
+        },
+        "phoneNumber" : {
+          "type" : "string"
+        },
+        "companies":{
+          "type" : "array",
+          "items": {
+            "properties": {
+              "company": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }

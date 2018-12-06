@@ -11,10 +11,15 @@ class InformerRepository {
 
   async getInformerById(informer_id) {
     const informer = await Informer.findById(informer_id).populate([
-      'categoryId',
+      'companyId',
       'taskId',
     ]);
     return informer;
   }
+
+  async getListOfInformers(){
+    return await Informer.find();
+  }
+
 }
 module.exports = InformerRepository;

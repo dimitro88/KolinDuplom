@@ -7,5 +7,9 @@ class CategoryRepository {
     return await category.save();
   }
 
+  async getListOfCategories(){
+    return await Category.find();
+  }
+
 }
 module.exports = CategoryRepository;

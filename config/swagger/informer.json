@@ -55,6 +55,24 @@
           }
         }
       }
+    },
+    "/api/get-list-of-informers":{
+      "x-swagger-router-controller":"InformerController",
+      "get":{
+        "summary":"Список інформерів",
+        "tags":[
+          "Informer API"
+        ],
+        "operationId":"getListOfInformers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InformerBody"
+            }
+          }
+        }
+      }
     }
   },
   "definitions":{

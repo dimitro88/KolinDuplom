@@ -28,6 +28,24 @@
           }
         }
       }
+    },
+    "/api/get-list-of-categories":{
+      "x-swagger-router-controller":"CategoryController",
+      "get":{
+        "summary":"Список категорій",
+        "tags":[
+          "Category API"
+        ],
+        "operationId":"getListOfCategories",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CategoryBody"
+            }
+          }
+        }
+      }
     }
   },
   "definitions":{

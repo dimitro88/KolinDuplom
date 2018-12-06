@@ -17,4 +17,10 @@ module.exports = {
     dbHelper.handleOk(res,
       informerRepository.getInformerById(req.swagger.params.informer_id.value));
   },
+
+  getListOfInformers(req,res,next){
+    dbHelper.handleOk(res,
+      informerRepository.getListOfInformers());
+  },
+
 };

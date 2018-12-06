@@ -36,5 +36,15 @@ module.exports = {
   createNewCompany(req, res, next){
     dbHelper.handleOk(res,
       userRepository.createNewCompany(req.user.id,req.body));
-  }
+  },
+
+  // getMyCompanies(req, res, next){
+  //   dbHelper.handleOk(res,
+  //     userRepository.getMyCompanies(req.user.id));
+  // }
+
+  getListOfAdmins(req,res,next){
+    dbHelper.handleOk(res,
+      userRepository.getListOfAdmins());
+  },
 };

@@ -13,4 +13,8 @@ module.exports = {
     dbHelper.handleOk(res, categoryRepository.createCategory(req.body));
   },
 
+  getListOfCategories(req,res,next){
+    dbHelper.handleOk(res,
+      categoryRepository.getListOfCategories());
+  },
 };

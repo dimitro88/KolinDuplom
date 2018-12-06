@@ -11,7 +11,9 @@ const userSchema = new Schema({
   fullName: {type:String, required: true},
   role: {type:String, required: true, enum: ['user','admin']},
   phoneNumber: {type:Number},
-  companies: {type:Array}
+  companies: [{
+    company: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'}
+  }]
 },{
   collection: 'users',
   timestamps: {

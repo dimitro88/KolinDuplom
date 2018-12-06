@@ -55,6 +55,24 @@
           }
         }
       }
+    },
+    "/api/get-list-of-tasks":{
+      "x-swagger-router-controller":"TaskController",
+      "get":{
+        "summary":"Список тасків",
+        "tags":[
+          "Task API"
+        ],
+        "operationId":"getListOfTasks",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TaskBody"
+            }
+          }
+        }
+      }
     }
   },
   "definitions":{
