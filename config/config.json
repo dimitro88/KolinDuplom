@@ -5,7 +5,7 @@
   "secret": "Lzre.nj,s<j;t?ojzytvjcrfkm",
   "swaggerUi": true,
   "server": {
-    "port": "25871",
+    "port": 27017,
     "swaggerPath": "/api-docs"
   }
 }

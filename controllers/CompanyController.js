@@ -41,5 +41,9 @@ module.exports = {
       companyRepository.getListOfCompanies());
   },
 
+  getInformersByCompanyId(req, res, next){
+    dbHelper.handleOk(res,
+      companyRepository.getInformersByCompanyId(req.swagger.params.company_id.value));
+  },
 
 };

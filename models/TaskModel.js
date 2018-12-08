@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema(
   {
     task : {type : String , required : true},
-    categoryId : {type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true},
-    companyId : {type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true},
+    categoryId : {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
+    companyId : {type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
     answer: {type : String , required : true}
   },
   {

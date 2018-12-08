@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "brain.js": "^1.6.0",
     "co": "^4.6.0",
     "cors": "^2.8.4",
     "crypto": "^1.0.1",

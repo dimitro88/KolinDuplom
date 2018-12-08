@@ -3,6 +3,7 @@ const _ = require('lodash');
 const Company = require('../models/CompanyModel');
 const Category = require('../models/CategoryModel');
 const Task = require('../models/TaskModel');
+const Informer = require('../models/InformerModel');
 const User = require('../models/UserModel');
 
 class CompanyRepository {
@@ -49,6 +50,11 @@ class CompanyRepository {
   async getTasksByCompanyId(company_id) {
     const tasks = await Task.find({companyId : company_id});
     return tasks;
+  }
+
+  async getInformersByCompanyId(company_id) {
+    const informers = await Informer.find({companyId : company_id});
+    return informers;
   }
 
   async getListOfCompanies(){

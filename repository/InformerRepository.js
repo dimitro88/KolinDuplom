@@ -1,6 +1,5 @@
-const co = require('co');
-const _ = require('lodash');
 const Informer = require('../models/InformerModel');
+const Task = require('../models/TaskModel');
 
 class InformerRepository {
 
@@ -19,6 +18,11 @@ class InformerRepository {
 
   async getListOfInformers(){
     return await Informer.find();
+  }
+
+  async createTaskByInformer(taskBody) {
+    const task = new Task(taskBody);
+    return await task.save();
   }
 
 }

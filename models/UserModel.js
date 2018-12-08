@@ -9,7 +9,6 @@ const userSchema = new Schema({
   login: {type:String, required: true, unique: true},
   password: {type:String, required: true},
   fullName: {type:String, required: true},
-  role: {type:String, required: true, enum: ['user','admin']},
   phoneNumber: {type:Number},
   companies: [{
     company: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'}

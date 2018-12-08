@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const informerSchema = new Schema({
     email : {type : String, required: true},
-    companyId : { type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true},
-    taskId : { type: mongoose.Schema.Types.ObjectId, ref: 'Task', required: true},
+    companyId : { type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
+    taskId : { type: mongoose.Schema.Types.ObjectId, ref: 'Task'},
     firstName : {type: String, required: true},
     lastName : {type: String , required : true},
     phoneNumber: {type: String, required : true}

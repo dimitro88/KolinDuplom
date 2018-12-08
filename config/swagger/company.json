@@ -191,6 +191,33 @@
         }
       }
     },
+    "/api/companies/get-informers-by-company-id/{company_id}": {
+      "x-swagger-router-controller": "CompanyController",
+      "get": {
+        "summary": "Усі інформери за айдішкою компанії",
+        "operationId": "getInformersByCompanyId",
+        "tags": [
+          "Company API"
+        ],
+        "parameters":[
+          {
+            "type": "string",
+            "name": "company_id",
+            "in": "path",
+            "description": "company_id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/informersBody"
+            }
+          }
+        }
+      }
+    },
     "/api/get-list-of-companies":{
       "x-swagger-router-controller":"CompanyController",
       "get":{
