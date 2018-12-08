@@ -46,11 +46,16 @@ class UserRepository {
     return await User.findByIdAndUpdate(user_id, companiesToPush, { new: true });
   }
 
-  // async getMyCompanies(user_id){
-  //   let companies = await Company.find().then(res => res.companies);
-  //   console.log(companies);
-  //   //return companies;
-  // }
+  async getMyCompanies(user_id){
+    let user = await User.findById(user_id);
+    console.log(user);
+    let companies = user.companies.map(async comp => {
+      console.log(comp.companyId);
+      return await Company.findById(comp.companyId).exec();
+    });
+    companies = await Promise.all(companies);
+    return companies;
+  }
 
   async getListOfAdmins(){
     return await User.find();

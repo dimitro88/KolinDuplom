@@ -23,4 +23,9 @@ module.exports = {
       taskRepository.getListOfTasks());
   },
 
+
+  createTaskByInformer(req, res, next) {
+    dbHelper.handleOk(res, taskRepository.createTaskByInformer(req.body));
+  },
+
 };

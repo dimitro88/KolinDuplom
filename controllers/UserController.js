@@ -38,10 +38,10 @@ module.exports = {
       userRepository.createNewCompany(req.user.id,req.body));
   },
 
-  // getMyCompanies(req, res, next){
-  //   dbHelper.handleOk(res,
-  //     userRepository.getMyCompanies(req.user.id));
-  // }
+  getMyCompanies(req, res, next){
+    dbHelper.handleOk(res,
+      userRepository.getMyCompanies(req.user.id));
+  },
 
   getListOfAdmins(req,res,next){
     dbHelper.handleOk(res,

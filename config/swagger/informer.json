@@ -73,35 +73,6 @@
           }
         }
       }
-    },
-    "/api/create-task-by-informer": {
-      "x-swagger-router-controller": "InformerController",
-      "post": {
-        "summary": "Створення таска інформером",
-        "operationId": "createTaskByInformer",
-        "tags": [
-          "Informer API"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "TaskBody",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/TaskBody"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/TaskBody"
-            }
-          }
-        }
-      }
     }
   },
   "definitions":{

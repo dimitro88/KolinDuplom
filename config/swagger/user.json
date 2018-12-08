@@ -105,7 +105,10 @@
               "$ref": "#/definitions/userCompaniesBody"
             }
           }
-        }
+        },
+        "security": [
+          { "token": [] }
+        ]
       }
     },
     "/api/get-list-of-admins":{
@@ -176,7 +179,7 @@
           "type" : "array",
           "items": {
             "properties": {
-              "company": {
+              "companyId": {
                 "type": "string"
               }
             }

@@ -23,8 +23,5 @@ module.exports = {
       informerRepository.getListOfInformers());
   },
 
-  createTaskByInformer(req, res, next) {
-    dbHelper.handleOk(res, informerRepository.createTaskByInformer(req.body));
-  },
 
 };

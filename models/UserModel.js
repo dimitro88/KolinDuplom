@@ -11,7 +11,7 @@ const userSchema = new Schema({
   fullName: {type:String, required: true},
   phoneNumber: {type:Number},
   companies: [{
-    company: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'}
+    companyId: {type: mongoose.Schema.Types.ObjectId, ref: 'Company'}
   }]
 },{
   collection: 'users',

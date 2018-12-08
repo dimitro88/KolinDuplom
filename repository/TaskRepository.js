@@ -19,5 +19,12 @@ class TaskRepository {
     return await Task.find();
   }
 
+
+  async createTaskByInformer(taskBody) {
+    const task = new Task(taskBody);
+    return await task.save();
+  }
+
+
 }
 module.exports = TaskRepository;
