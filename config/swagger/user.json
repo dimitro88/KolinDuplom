@@ -90,7 +90,7 @@
         ]
       }
     },
-    "/api/get-all-my-companies": {
+    "/api/get-all-my-companies/{user_id}": {
       "x-swagger-router-controller": "UserController",
       "get": {
         "summary": "Мої компанії",
@@ -98,6 +98,15 @@
           "User API"
         ],
         "operationId": "getMyCompanies",
+        "parameters":[
+          {
+            "type": "string",
+            "name": "user_id",
+            "in": "path",
+            "description": "user_id",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description" : "OK",

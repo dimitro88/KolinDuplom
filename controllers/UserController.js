@@ -40,7 +40,7 @@ module.exports = {
 
   getMyCompanies(req, res, next){
     dbHelper.handleOk(res,
-      userRepository.getMyCompanies(req.user.id));
+      userRepository.getMyCompanies(req.swagger.params.user_id.value));
   },
 
   getListOfAdmins(req,res,next){
