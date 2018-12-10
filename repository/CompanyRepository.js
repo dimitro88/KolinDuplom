@@ -8,11 +8,6 @@ const User = require('../models/UserModel');
 
 class CompanyRepository {
 
-  async createCompany(companyBody) {
-      const company = new Company(companyBody);
-      return await company.save();
-  }
-
   async addAdminsToCompany(company_id, adminsToPush){
     let company = await Company.findById(company_id);
     console.log(adminsToPush.admins);

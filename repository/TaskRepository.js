@@ -1,5 +1,6 @@
-const Task = require('../models/TaskModel');
+﻿const Task = require('../models/TaskModel');
 const Category = require('../models/CategoryModel');
+const Informer = require('../models/InformerModel');
 
 const brain = require('brain.js');
 
@@ -26,11 +27,22 @@ class TaskRepository {
   }
 
 
-  async createTaskByInformer(taskBody) {
+  async createTaskByInformer(TaskBody) {
     try {
-      let tasks = await Task.find().populate(["categoryId"]);
-      console.log(tasks);
+      console.log(TaskBody);
+      let informerBody = {
+        email : TaskBody.email,
+        companyId : TaskBody.companyId,
+        firstName : TaskBody.firstName,
+        lastName : TaskBody.lastName,
+        phoneNumber : TaskBody.phoneNumber,
+      };
+      const informer = new Informer(informerBody);
+      await informer.save();
+      let tasks = await Task.find({companyId : TaskBody.companyId}).populate(["categoryId"]);
       const trainingData = tasks.map(item => {
+        console.log(item.task);
+        console.log(item.categoryId.name);
         return {
           input: item.task,
           output: item.categoryId.name
@@ -38,15 +50,20 @@ class TaskRepository {
       });
 
       network.train(trainingData, {
-        iterations: 50
+        iterations: 1000
       });
 
-      const task = new Task(taskBody);
-      const output = network.run(task.task);
+      const output = network.run(TaskBody.taskText);
       console.log(output);
       let category = await Category.findOne({name: output});
-      task.answer = output;
-      task.categoryId = category._id;
+      const taskBody = {
+        task : TaskBody.taskText,
+        companyId : TaskBody.companyId,
+        answer : output,
+        categoryId : category._id
+      };
+      const task = new Task(taskBody);
+      console.log(category);
       await task.save();
       let tasksForReturn = await Task.find({categoryId: category._id});
       return {
@@ -54,6 +71,7 @@ class TaskRepository {
         tasksForReturn};
     }
     catch(err){
+      console.log(err);
       return {
         message : "Такої категорії не знайдено!"
       }

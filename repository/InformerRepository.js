@@ -4,8 +4,7 @@ const Task = require('../models/TaskModel');
 class InformerRepository {
 
   async createInformer(informerBody) {
-    const informer = new Informer(informerBody);
-    return await informer.save();
+
   }
 
   async getInformerById(informer_id) {

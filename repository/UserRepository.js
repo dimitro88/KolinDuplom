@@ -36,14 +36,22 @@ class UserRepository {
     })
   }
 
-  async createNewCompany(user_id, companiesToPush){
+  async createNewCompany(user_id, companyBody){
+    console.log(companyBody);
+    const company = new Company(companyBody);
+    let admin = {
+      adminId : user_id
+    };
+    company.admins.push(admin);
+    await company.save();
     let user = await User.findById(user_id);
-    console.log(user);
-    console.log(user.companies);
-    user.companies.forEach(company => {
-      companiesToPush.companies.push(company);
-    });
-    return await User.findByIdAndUpdate(user_id, companiesToPush, { new: true });
+    let companiesOfUser = [...user.companies];
+    let companyToPush = {
+      companyId : company._id
+    };
+    companiesOfUser.push(companyToPush);
+    user.companies = [...companiesOfUser];
+    return await User.findByIdAndUpdate(user_id, user, { new: true });
   }
 
   async getMyCompanies(user_id){

@@ -9,9 +9,6 @@ module.exports = {
    * @param {Object} res відповідь
    * @param {Object} next наступний
    */
-  createCompany(req, res, next) {
-    dbHelper.handleOk(res, companyRepository.createCompany(req.body));
-  },
 
   addAdminsToCompany(req, res, next) {
     dbHelper.handleOk(res, companyRepository.addAdminsToCompany(req.swagger.params.company_id.value, req.body));

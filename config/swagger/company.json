@@ -1,34 +1,5 @@
 {
   "paths": {
-    "/api/create-company": {
-      "x-swagger-router-controller": "CompanyController",
-      "post": {
-        "summary": "Створити компанію",
-        "operationId": "createCompany",
-        "tags": [
-          "Company API"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "CompanyBody",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CompanyBody"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/CompanyBody"
-            }
-          }
-        }
-      }
-    },
     "/api/companies/add-admins/{company_id}": {
       "x-swagger-router-controller": "CompanyController",
       "put": {
